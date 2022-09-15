@@ -12,13 +12,13 @@
    
    
     <div id="app" class ="mx-auto">
-        <h2 class="font-bold mb-2">Assignements</h2> 
+        <h2 class="font-bold mb-2">Assignments</h2> 
     <section v-show="inProgressAssignments.length">
         <h2 class="font-bold mb-2">In progress ...</h2> 
 
         <ul >
             
-            <li v-for="assignment in assignments.filter(a=>!a.complete)" :key="assignment.id">
+            <li v-for="assignment in inProgressAssignments" :key="assignment.id">
                 <label>
             {{ assignment.name }} <input type="checkbox" v-model="assignment.complete" /> 
             </li>
@@ -32,7 +32,7 @@
 
         <ul >
             
-            <li v-for="assignment in assignments.filter(a=>a.complete)" :key="assignment.id">
+            <li v-for="assignment in completedAssignments" :key="assignment.id">
                 <label>
             {{ assignment.name }} <input type="checkbox" v-model="assignment.complete" /> 
             </li>
