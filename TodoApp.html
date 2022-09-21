@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vues Courses-2</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="h-full grid place-items-center">
+   
+   
+    <div id="app" >
+        <h2 class="font-bold mb-2">Todo App</h2>
+      
+    <section>
+        <div class=" flex gap-2">
+        <input  class="form-control
+        block w-full px-3 py-1.5 text-gray-700   bg-white bg-clip-padding
+        border border-solid border-gray-300  rounded"  v-model="message"   type="text" placeholder="to do"/>
+        <button :disabled="message.length === 0" class="px-3 rounded inline-block px-6 py-2.5 bg-blue-600 text-white" type="button" @click="addTodo()">Add todo</button>
+    </div>
+        <br>
+            <li v-for="todo in todos" key="id">
+               <span>{{ todo.title }}</span> |{{ todo.id }} 
+            </li>
+        </ul>
+       
+    </section>
+     <pre>{{ todos }}</pre>
+    </div>
+	<script>
+
+        let app = {
+             data(){
+                return{
+                    todos :[
+                        {title:'Go to gym',id:1},
+                        {title:'Read 4 chapters',id:2},
+                        {title:'Wash clothes',id:3},
+                    ],
+                    message:''
+                }
+             },    
+             methods: {
+                addTodo(){
+
+                        this.todos.push({
+                        title: this.message,
+                        id:this.todos.length +1,                      
+                    })                      
+                    this.message=""
+                 
+                
+                }
+             },
+             
+
+        }
+        Vue.createApp(app).mount('#app')
+       
+    </script>
+  </body>
